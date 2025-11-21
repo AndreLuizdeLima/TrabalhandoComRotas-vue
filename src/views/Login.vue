@@ -38,14 +38,15 @@ export default {
   methods: {
     navegarPara(){
 
-        // adiciona a rota no historico
-    
-        //this.$router.push('/home')
+        
         
         this.$router.push({
             path: '/home'
         })
 
+        // adiciona a rota no historico
+    
+        //this.$router.push('/home')
 
         //subsititui a rota sem historico
         
