@@ -24,7 +24,7 @@
                         <div class="mb-3">
                             <input type="password" class="form-control" placeholder="Senha">
                         </div>
-                        <button class="btn btn-primary">Login</button>
+                        <button class="btn btn-primary" @click="navegarPara()">Login</button>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,37 @@
 
 <script>
 export default {
-  name: 'LoginPage'
+  name: 'LoginPage',
+  methods: {
+    navegarPara(){
+
+        // adiciona a rota no historico
+    
+        //this.$router.push('/home')
+        
+        this.$router.push({
+            path: '/home'
+        })
+
+
+        //subsititui a rota sem historico
+        
+        //this.$router.replace('/home')
+
+        // avança pagina
+        
+        //this.$router.forward()
+
+        // volta pagina
+        
+        //this.$router.back()
+
+        //avançar ou voltar com base em numeros
+        //this.$router.go(4)
+
+        
+    }
+  }
 }
 </script>
 
