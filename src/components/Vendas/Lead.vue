@@ -12,7 +12,7 @@
         <div class="mb-3 row">
             <label for="col-sm-2 col-form-label">Telefone</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" :value="dados.telefone">
+                <input type="text" class="form-control" :value="dados.telefone" v-mask="['(##) #####-####', '(##) ####-####']" >
             </div>
         </div>
 
