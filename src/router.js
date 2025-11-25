@@ -19,8 +19,8 @@ const routes = [
                 path: 'vendas',
                 component: VendasHome,
                 children: [
-                    {path: 'leads', component: LeadsVendas },
-                    {path: 'leads/:id', component: LeadVendas },
+                    {path: 'leads', component: LeadsVendas, name: 'leads' },
+                    {path: 'leads/:id', component: LeadVendas, name: 'lead' },
                     {path: 'contratos', component: ContratosVendas, name: 'contratos' },
                     {path: '', component: VendasPadrao },
                 ]
