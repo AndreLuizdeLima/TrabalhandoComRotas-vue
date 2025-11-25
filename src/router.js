@@ -9,6 +9,7 @@ import ContratosVendas from './components/vendas/Contratos.vue'
 import DashboardHome from './components/dashboard/Dashboard.vue'
 import LeadVendas from './components/vendas/Lead.vue'
 import VendasPadrao from './components/vendas/VendasPadrao.vue'
+import ServicoHome from './components/servicos/Servico.vue'
 
 const routes = [
     {
@@ -28,7 +29,10 @@ const routes = [
             {
                 path: 'servicos',
                 component: ServicosHome,
-                name: 'servicosHome'
+                name: 'servicosHome',
+                children: [
+                    {path: ':id', component: ServicoHome, name: 'servico'}
+                ]
             },
             {
                 path: 'dashboard',
