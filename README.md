@@ -1,24 +1,68 @@
-# rotas-vue-empresa
+# 📦 rotas-vue-empresa (Empresa 360)
 
-## Project setup
-```
+Projeto desenvolvido em **Vue.js** com foco no estudo e prática de **rotas Vue Router**.
+O sistema simula uma aplicação chamada **Empresa 360**, utilizando um backend fake com **JSON Server** para simular a API.
+
+
+
+## 🚀 Tecnologias utilizadas
+
+* Vue.js
+* Vue Router
+* JSON Server
+* Node.js / NPM
+* Vue-the-mask
+
+
+
+## 🔧 Instalação do projeto
+
+```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+
+
+## ▶️ Executando o projeto (Frontend)
+
+```bash
 npm run serve
 ```
 
-### Compiles and minifies for production
+
+
+## 📡 Executando o JSON Server (Backend Fake)
+
+Certifique-se de que o arquivo **json-server.json** está na raiz do projeto.
+
+```bash
+json-server --watch json-server.json
 ```
+
+> Você pode alterar a porta caso necessário, por exemplo:
+>
+> ```bash
+> json-server --watch json-server.json --port 3001
+> ```
+
+
+
+## 📦 Build para produção
+
+```bash
 npm run build
 ```
 
-### Lints and fixes files
-```
+
+
+## 🔍 Lint (analisar e corrigir problemas)
+
+```bash
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## 📌 Observações
+
+* Certifique-se de que o JSON Server está rodando **antes de iniciar o Vue**, caso o frontend dependa dos dados.
+* Caso use rotas por história (`history mode`), pode ser necessário configurar o servidor para evitar erro 404.
