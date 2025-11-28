@@ -17,6 +17,7 @@ import DashboardRodaPe from './components/dashboard/DashboardRodaPe.vue'
 const routes = [
     {
         path: '/home',
+        alias: '/app',
         component: HomePage,
         children: [
             {
@@ -24,7 +25,7 @@ const routes = [
                 component: VendasHome,
                 children: [
                     {path: 'leads', component: LeadsVendas, name: 'leads' },
-                    {path: 'leads/:id', component: LeadVendas, name: 'lead' },
+                    {path: 'leads/:id', component: LeadVendas, name: 'lead'  , alias: ['/l/:id', '/pessoa/:id', '/:id']},
                     {path: 'contratos', component: ContratosVendas, name: 'contratos' },
                     {path: '', component: VendasPadrao },
                 ]
@@ -34,7 +35,7 @@ const routes = [
                 component: ServicosHome,
                 name: 'servicosHome',
                 children: [
-                    {path: ':id', components: {
+                    {path: ':id', alias: '/s/:id', components: {
                         default: ServicoHome,
                         opcoes:  Opcoes,
                         indicadores: Indicadores 
