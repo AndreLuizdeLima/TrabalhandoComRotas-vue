@@ -7,7 +7,7 @@ O sistema simula uma aplicação chamada **Empresa 360**, utilizando um backend 
 
 ## 🚀 Tecnologias utilizadas
 
-* Vue.js
+* Vue.js"
 * Vue Router
 * JSON Server
 * Node.js / NPM
