@@ -35,7 +35,8 @@ export default {
     methods: {
     },
     created() {
-      this.getDadosApi('http://localhost:3000/contratos')
+      this.getDadosApi('http://localhost:3000/contratos?_expand=lead&_expand=servicos')
+      console.log(this.dados)
     }
 }
 </script>
