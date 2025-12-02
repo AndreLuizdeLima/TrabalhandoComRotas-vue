@@ -13,6 +13,7 @@ import ServicoHome from './components/servicos/Servico.vue'
 import Indicadores from './components/servicos/Indicadores.vue'
 import Opcoes from './components/servicos/Opcoes.vue'
 import DashboardRodaPe from './components/dashboard/DashboardRodaPe.vue'
+import PaginaNaoEncontrada from './views/PaginaNaoEncontrada.vue'
 
 const routes = [
     {
@@ -25,7 +26,7 @@ const routes = [
                 component: VendasHome,
                 children: [
                     {path: 'leads', component: LeadsVendas, name: 'leads' },
-                    {path: 'leads/:id', component: LeadVendas, name: 'lead'  , alias: ['/l/:id', '/pessoa/:id', '/:id']},
+                    {path: 'leads/:id', component: LeadVendas, name: 'lead'  , alias: ['/l/:id', '/pessoa/:id']},
                     {path: 'contratos', component: ContratosVendas, name: 'contratos' },
                     {path: '', component: VendasPadrao },
                 ]
@@ -72,6 +73,9 @@ const routes = [
                 //return '/home/'
                 return { name: 'leads'}
             }
+    },
+    {
+        path: '/:catchAll(.*)*' , component: PaginaNaoEncontrada
     }
 ]
 
