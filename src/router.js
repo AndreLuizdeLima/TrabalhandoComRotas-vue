@@ -58,6 +58,20 @@ const routes = [
     {
         path: '/',
         component: SitePage
+    },
+    {
+        //path: '/redirecionamento-1', redirect: '/home/servicos'
+        //path: '/redirecionamento-1', redirect: {name: 'leads'}
+        path: '/redirecionamento-1', redirect: '/home/vendas'
+    },
+    {
+        path: '/redirecionamento-2', redirect: to => {
+                //algo antes do redirecionamento
+                console.log(to)
+
+                //return '/home/'
+                return { name: 'leads'}
+            }
     }
 ]
 
