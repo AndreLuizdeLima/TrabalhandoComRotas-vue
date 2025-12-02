@@ -16,8 +16,8 @@
           <td>{{ d.id }}</td>
           <td>{{ d.leadId }}</td>
           <td>{{ d.servicoId }}</td>
-          <td>{{ d.data_inicio }}</td>
-          <td>{{ d.data_fim }}</td>
+          <td>{{$moment(d.data_inicio).format('DD/MM/YYYY')}}</td>
+          <td>{{ $moment(d.data_fim).format('DD/MM/YYYY') }}</td>
         </tr>
       </tbody>
     </table>
