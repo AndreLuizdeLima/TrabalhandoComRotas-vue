@@ -1,9 +1,26 @@
 <template>
   <div>
-    <h5>Contratos</h5>
-
-    <router-link class="btn btn-primary" :to="{name: 'contratos', query: {_limit:1}}">Limit id 1</router-link>
-    <router-link class="btn btn-success" to="/home/vendas/contratos">Reverter</router-link>
+    <div class="card mb-4">
+      <div class="card-header">Contratos</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <label class="form-label">ID Contrato:</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-6">
+            <label class="form-label">Data início:</label>
+            <div class="input-group">
+              <input type="date" class="form-control">
+              <input type="date" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-primary">Pesquisar</button>
+      </div>
+    </div>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -19,7 +36,7 @@
           <td>{{ d.id }}</td>
           <td>{{ d.leadId }}</td>
           <td>{{ d.servicoId }}</td>
-          <td>{{$moment(d.data_inicio).format('DD/MM/YYYY')}}</td>
+          <td>{{ $moment(d.data_inicio).format('DD/MM/YYYY') }}</td>
           <td>{{ $moment(d.data_fim).format('DD/MM/YYYY') }}</td>
         </tr>
       </tbody>
@@ -31,24 +48,21 @@
 import ApiMixin from '@/mixins/ApiMixin';
 
 export default {
-    name: 'ContratosVendas',
-    mixins: [ApiMixin],
-    data: () => ({
-      queryParamsBase: ''
-    }),
-    methods: {
-    },
-    created() {
-      const queryParams = new URLSearchParams(this.$route.params).toString()
-      this.getDadosApi(`http://localhost:3000/contratos?${this.queryParams}&${queryParams}`)
-    }, 
-    beforeRouteUpdate(to){
-      const queryParams = new URLSearchParams(to.query).toString()
-      this.getDadosApi(`http://localhost:3000/contratos?${queryParams}`)
-    }
+  name: 'ContratosVendas',
+  mixins: [ApiMixin],
+  data: () => ({
+  }),
+  methods: {
+  },
+  created() {
+    const queryParams = new URLSearchParams(this.$route.params).toString()
+    this.getDadosApi(`http://localhost:3000/contratos?${queryParams}`)
+  },
+  beforeRouteUpdate(to) {
+    const queryParams = new URLSearchParams(to.query).toString()
+    this.getDadosApi(`http://localhost:3000/contratos?${queryParams}`)
+  }
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
