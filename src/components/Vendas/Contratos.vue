@@ -1,6 +1,9 @@
 <template>
   <div>
     <h5>Contratos</h5>
+
+    <router-link class="btn btn-primary" :to="{name: 'contratos', query: {_limit:1}}">Limit id 1</router-link>
+    <router-link class="btn btn-success" to="/home/vendas/contratos">Reverter</router-link>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -31,12 +34,17 @@ export default {
     name: 'ContratosVendas',
     mixins: [ApiMixin],
     data: () => ({
+      queryParamsBase: ''
     }),
     methods: {
     },
     created() {
-      this.getDadosApi('http://localhost:3000/contratos?_expand=lead&_expand=servicos')
-      console.log(this.dados)
+      const queryParams = new URLSearchParams(this.$route.params).toString()
+      this.getDadosApi(`http://localhost:3000/contratos?${this.queryParams}&${queryParams}`)
+    }, 
+    beforeRouteUpdate(to){
+      const queryParams = new URLSearchParams(to.query).toString()
+      this.getDadosApi(`http://localhost:3000/contratos?${queryParams}`)
     }
 }
 </script>
