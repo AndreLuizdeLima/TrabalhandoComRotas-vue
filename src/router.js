@@ -95,4 +95,9 @@ const router = createRouter({
     routes: routes
 })
 
+router.beforeEach((to, from) => {
+    console.log('origem' + to)
+    console.log('destino' + from)
+})
+
 export default router
