@@ -26,7 +26,7 @@ const routes = [
                 component: VendasHome,
                 children: [
                     {path: 'leads', component: LeadsVendas, name: 'leads' },
-                    {path: 'leads/:id', component: LeadVendas, name: 'lead'  , alias: ['/l/:id', '/pessoa/:id']},
+                    {path: 'leads/:id/:outro', props: true , component: LeadVendas, name: 'lead', alias: ['/pessoa/:id/:outro'] },
                     {path: 'contratos', component: ContratosVendas, name: 'contratos' },
                     {path: '', component: VendasPadrao },
                 ]
@@ -36,7 +36,7 @@ const routes = [
                 component: ServicosHome,
                 name: 'servicosHome',
                 children: [
-                    {path: ':id', alias: '/s/:id', components: {
+                    {path: ':id', alias: '/s/:id', props: { default: true, opcoes: false, indicadores: true }, components: {
                         default: ServicoHome,
                         opcoes:  Opcoes,
                         indicadores: Indicadores 

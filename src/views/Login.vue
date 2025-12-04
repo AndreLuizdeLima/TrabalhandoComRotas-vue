@@ -22,7 +22,7 @@
                             <input type="email" class="form-control" placeholder="E-mail">
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control" placeholder="Senha">
+                            <input type="text" class="form-control" placeholder="Senha">
                         </div>
                         <button class="btn btn-primary" @click="navegarPara()">Login</button>
                     </div>

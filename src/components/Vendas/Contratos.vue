@@ -6,19 +6,19 @@
         <div class="row">
           <div class="col-6">
             <label class="form-label">ID Contrato:</label>
-            <input type="text" class="form-control">
+            <input type="number" class="form-control" v-model="formPesquisa.id">
           </div>
           <div class="col-6">
             <label class="form-label">Data início:</label>
             <div class="input-group">
-              <input type="date" class="form-control">
-              <input type="date" class="form-control">
+              <input type="date" class="form-control" v-model="formPesquisa.data_inicio">
+              <input type="date" class="form-control" v-model="formPesquisa.data_fim">
             </div>
           </div>
         </div>
       </div>
       <div class="card-footer">
-        <button type="button" class="btn btn-primary">Pesquisar</button>
+        <button type="button" class="btn btn-primary" @click="pesquisar()">Pesquisar</button>
       </div>
     </div>
     <table class="table table-hover">
@@ -51,8 +51,18 @@ export default {
   name: 'ContratosVendas',
   mixins: [ApiMixin],
   data: () => ({
+    formPesquisa: {
+      id: '',
+      data_inicio: '',
+      data_fim: ''
+    }
   }),
   methods: {
+    pesquisar() {
+      const idFiltro = this.formPesquisa.id
+      this.getDadosApi(`http://localhost:3000/contratos/${idFiltro}`)
+      console.log(this.dados)
+    }
   },
   created() {
     const queryParams = new URLSearchParams(this.$route.params).toString()

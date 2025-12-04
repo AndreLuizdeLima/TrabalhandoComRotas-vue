@@ -21,7 +21,6 @@
             <button type="button" class="btn btn-primary">Atualizar</button>
         </div>
 
-
     </div>
 </template>
 
@@ -31,12 +30,13 @@ import ApiMixin from '@/mixins/ApiMixin';
 export default {
     name: 'LeadVendas',
     mixins: [ApiMixin],
+    props: ['id', 'outro'],
     data: () => ({
     }),
     methods: {
     },
     created() {
-        this.getDadosApi(`http://localhost:3000/leads/${this.$route.params.id}`)
+        this.getDadosApi(`http://localhost:3000/leads/${this.id}`)
     }
 }
 </script>

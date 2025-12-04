@@ -1,13 +1,18 @@
 <template>
-  <div>indicador</div>
+  <div>indicador {{ idIndicador }}</div>
 </template>
 
 <script>
 export default {
-    name: 'IndicadoresServico'
+  name: 'IndicadoresServico',
+  props: ['id'],
+  data: () => ({
+    idIndicador: ''
+  }),
+  created() {
+    this.idIndicador = this.id
+  }
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

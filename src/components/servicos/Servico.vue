@@ -16,12 +16,13 @@ import ApiMixin from '@/mixins/ApiMixin';
 export default {
     name: 'ServicoHome',
     mixins: [ApiMixin],
+    props: ['id'],
     data: () => ({
     }),
     methods: {
     },
     created() {
-        this.getDadosApi(`http://localhost:3000/servicos/${this.$route.params.id}`)
+        this.getDadosApi(`http://localhost:3000/servicos/${this.id}`)
     },
     // watch: {
     //     $route(to) {
@@ -30,9 +31,8 @@ export default {
     //     }
     // }
     //beforeRouteUpdate(to, from, next) {
-    beforeRouteUpdate(to, next) {
+    beforeRouteUpdate(to) {
         if (to.params.id != undefined) this.getDadosApi(`http://localhost:3000/servicos/${to.params.id}`)
-        next()
     }
 }
 </script>
