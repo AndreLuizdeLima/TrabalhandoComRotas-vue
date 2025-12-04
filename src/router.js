@@ -26,7 +26,16 @@ const routes = [
                 component: VendasHome,
                 children: [
                     {path: 'leads', component: LeadsVendas, name: 'leads' },
-                    {path: 'leads/:id/:outro', props: true , component: LeadVendas, name: 'lead', alias: ['/pessoa/:id/:outro'] },
+                    {
+                        path: 'leads/:id', 
+                        //props: true,
+                        // {id: 4, outro: 'outro'},
+                        props: route => {
+                            console.log(route)
+                            return {id: route.params.id}
+                        },
+                        component: LeadVendas, name: 'lead', alias: ['/pessoa/:id'] 
+                    },
                     {path: 'contratos', component: ContratosVendas, name: 'contratos' },
                     {path: '', component: VendasPadrao },
                 ]

@@ -20,7 +20,6 @@
             <button type="button" class="btn btn-warning" @click="$router.push({name: 'leads'})">Voltar</button>
             <button type="button" class="btn btn-primary">Atualizar</button>
         </div>
-
     </div>
 </template>
 
@@ -30,7 +29,7 @@ import ApiMixin from '@/mixins/ApiMixin';
 export default {
     name: 'LeadVendas',
     mixins: [ApiMixin],
-    props: ['id', 'outro'],
+    props: ['id'],
     data: () => ({
     }),
     methods: {
