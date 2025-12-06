@@ -18,6 +18,7 @@ import PaginaNaoEncontrada from './views/PaginaNaoEncontrada.vue'
 const routes = [
     {
         path: '/home',
+        meta: { requerAutorizacao: true },
         alias: '/app',
         component: HomePage,
         children: [
@@ -25,19 +26,24 @@ const routes = [
                 path: 'vendas',
                 component: VendasHome,
                 children: [
-                    {path: 'leads', component: LeadsVendas, name: 'leads' },
                     {
-                        path: 'leads/:id', 
+                        path: 'leads', component: LeadsVendas, name: 'leads',
+                        beforeEnter(to) {
+                            console.log('Gaurda de rota Leads befode Enter: ' + to.meta.requerAutorizacao)
+                        }
+                    },
+                    {
+                        path: 'leads/:id',
                         //props: true,
                         // {id: 4, outro: 'outro'},
                         props: route => {
                             console.log(route)
-                            return {id: route.params.id}
+                            return { id: route.params.id }
                         },
-                        component: LeadVendas, name: 'lead', alias: ['/pessoa/:id'] 
+                        component: LeadVendas, name: 'lead', alias: ['/pessoa/:id']
                     },
-                    {path: 'contratos', component: ContratosVendas, name: 'contratos' },
-                    {path: '', component: VendasPadrao },
+                    { path: 'contratos', component: ContratosVendas, name: 'contratos' },
+                    { path: '', component: VendasPadrao },
                 ]
             },
             {
@@ -45,11 +51,13 @@ const routes = [
                 component: ServicosHome,
                 name: 'servicosHome',
                 children: [
-                    {path: ':id', alias: '/s/:id', props: { default: true, opcoes: false, indicadores: true }, components: {
-                        default: ServicoHome,
-                        opcoes:  Opcoes,
-                        indicadores: Indicadores 
-                    }, name: 'servico'}
+                    {
+                        path: ':id', alias: '/s/:id', props: { default: true, opcoes: false, indicadores: true }, components: {
+                            default: ServicoHome,
+                            opcoes: Opcoes,
+                            indicadores: Indicadores
+                        }, name: 'servico'
+                    }
                 ]
             },
             {
@@ -67,7 +75,8 @@ const routes = [
     },
     {
         path: '/',
-        component: SitePage
+        component: SitePage,
+        meta: { requerAutorizacao: false }
     },
     {
         //path: '/redirecionamento-1', redirect: '/home/servicos'
@@ -76,15 +85,15 @@ const routes = [
     },
     {
         path: '/redirecionamento-2', redirect: to => {
-                //algo antes do redirecionamento
-                console.log(to)
+            //algo antes do redirecionamento
+            console.log(to)
 
-                //return '/home/'
-                return { name: 'leads'}
-            }
+            //return '/home/'
+            return { name: 'leads' }
+        }
     },
     {
-        path: '/:catchAll(.*)*' , component: PaginaNaoEncontrada
+        path: '/:catchAll(.*)*', component: PaginaNaoEncontrada
     }
 ]
 
@@ -95,9 +104,18 @@ const router = createRouter({
     routes: routes
 })
 
-router.beforeEach((to, from) => {
-    console.log('origem' + to)
-    console.log('destino' + from)
+//router.beforeEach((to, from) => {
+router.beforeEach(() => {
+    //ao navegar numa roda ele funciona
+    //antes da navegação
+    //console.log('Rota requer autorização: ' + to.meta.requerAutorizacao)
+})
+
+//router.afterEach((to, from) => {
+router.afterEach(() => {
+    //apos navegar ela executa
+    //console.log('Origem '+ to)
+    //console.log('destino '+ from)
 })
 
 export default router
