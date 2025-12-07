@@ -3,17 +3,23 @@ import HomePage from './views/Home.vue'
 import LoginPage from './views/Login.vue'
 import SitePage from './views/Site.vue'
 import VendasHome from './components/vendas/Vendas.vue'
-import ServicosHome from './components/servicos/Servicos.vue'
 import LeadsVendas from './components/vendas/Leads.vue'
-import ContratosVendas from './components/vendas/Contratos.vue'
-import DashboardHome from './components/dashboard/Dashboard.vue'
 import LeadVendas from './components/vendas/Lead.vue'
 import VendasPadrao from './components/vendas/VendasPadrao.vue'
-import ServicoHome from './components/servicos/Servico.vue'
-import Indicadores from './components/servicos/Indicadores.vue'
-import Opcoes from './components/servicos/Opcoes.vue'
-import DashboardRodaPe from './components/dashboard/DashboardRodaPe.vue'
 import PaginaNaoEncontrada from './views/PaginaNaoEncontrada.vue'
+
+//lazy loading
+//import ContratosVendas from './components/vendas/Contratos.vue'
+const ContratosVendas = () =>  import('./components/vendas/Contratos.vue')
+
+const DashboardRodaPe = () => import('./components/dashboard/DashboardRodaPe.vue')
+const DashboardHome = () => import('./components/dashboard/Dashboard.vue')
+
+const ServicosHome = () => import(/* webpackChunkName: "servicos"*/'./components/servicos/Servicos.vue')
+const ServicoHome = () => import(/* webpackChunkName: "servicos"*/'./components/servicos/Servico.vue')
+const Indicadores = () => import(/* webpackChunkName: "servicos"*/'./components/servicos/Indicadores.vue')
+const Opcoes = () => import(/* webpackChunkName: "servicos"*/'./components/servicos/Opcoes.vue')
+
 
 const routes = [
     {
