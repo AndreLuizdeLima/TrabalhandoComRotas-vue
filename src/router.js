@@ -101,6 +101,9 @@ const routes = [
 const router = createRouter({
     //history: createWebHashHistory(),
     history: createWebHistory(),
+    scrollBehavior() {
+        return {left: 0, top: 150}
+    },
     routes: routes
 })
 
@@ -116,6 +119,10 @@ router.afterEach(() => {
     //apos navegar ela executa
     //console.log('Origem '+ to)
     //console.log('destino '+ from)
+})
+
+router.beforeResolve(() => {
+    //antes de navegar mas depois do after e before
 })
 
 export default router

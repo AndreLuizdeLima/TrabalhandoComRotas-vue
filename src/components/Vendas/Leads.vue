@@ -40,6 +40,9 @@ export default {
     },
     beforeRouteEnter(){
       console.log('before router enter')
+    },
+    beforeRouteLeave(){
+       console.log('antes de trocar a rota')
     }
 }
 </script>
